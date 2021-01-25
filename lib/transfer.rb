@@ -17,9 +17,9 @@ class Transfer
     if valid? && status == 'pending'
       sender.withdraw(amount)
       receiver.deposit(amount)
-      status = 'complete'
+      @status = 'complete'
     else
-      status = 'rejected'
+      @status = 'rejected'
       "Transaction rejected. Please check your account balance."
     end
   end
@@ -28,7 +28,7 @@ class Transfer
     if status == 'complete'
       receiver.withdraw(amount)
       sender.deposit(amount)
-      status = 'reversed'
+      @status = 'reversed'
     end
   end
 end
